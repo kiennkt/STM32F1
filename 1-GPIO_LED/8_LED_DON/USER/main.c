@@ -6,7 +6,9 @@ void delay(unsigned int time);
 void Led_Init();
 void Led_Blink();
 void Led_Increase();
+void Led_Increase_1();
 void Led_Decrease();
+void Led_Decrease_1();
 
 int main(void){
 	Led_Init();
@@ -14,6 +16,8 @@ int main(void){
 //		Led_Blink();
 		Led_Decrease();
 		Led_Increase();
+//		Led_Increase_1();
+//		Led_Decrease_1();
 	}
 }
 
@@ -25,6 +29,7 @@ void delay(unsigned int time){
 }
 
 void Led_Init(){
+	//	RCC->APB2ENR |= (1<<2);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	// Su dung thanh ghi
 	GPIOA->CRL = 0x33333333;
@@ -72,10 +77,32 @@ void Led_Increase(){
 		delay(100);
 	}
 }
+
 void Led_Decrease(){
 	int i;
-	for(i = 0; i < 9; i++){
+	for(i = 0; i < 8; i++){
 		GPIOA->ODR = LED[i];
+		delay(100);
+	}
+}
+
+void Led_Increase_1(){
+	int i = 0;
+	GPIOA->ODR = 0x00;
+	for(i = 0; i < 8; i++){
+		delay(100);
+		GPIOA->ODR <<= 1;
+		GPIOA->ODR |= 1;
+	}
+	delay(100);
+}
+
+void Led_Decrease_1(){
+	int i = 0;
+	GPIOA->ODR = 0xff;
+	for(i = 0; i < 8; i++){
+		GPIOA->ODR >>= 1;
+		GPIOA->ODR |= 1;
 		delay(100);
 	}
 }
