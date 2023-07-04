@@ -2,14 +2,16 @@
 #include "stm32f10x_rcc.h"              // Keil::Device:StdPeriph Drivers:RCC
 #include "stm32f10x_gpio.h"             // Keil::Device:StdPeriph Drivers:GPIO
 
-// Bai toan: Dieu khien Led bang nut nhan, bam nut 1 thi led se nhap nhay theo so lan duoc bam
-					// Bam nut 2 thi led tat, bam tiep led lai tiep tuc duoc nhay
+// Dieu khien Led bang nut nhan, bam nut 1 thi led se nhap nhay theo so lan duoc bam
+// Bam nut 2 thi led se nhap nhay xen ke va nhap nhay theo so lan bam
 					
 void Delay_Ms(unsigned int time);
 void Led_Config();
 void Button_Config();
 void Exti_Config();
 void NVIC_Config();
+void Timer_Config();
+
 
 int main(void){
 	Led_Config();
@@ -68,6 +70,7 @@ void NVIC_Config(){
 
 uint16_t count = 0;
 uint16_t count1 = 0;
+
 
 void EXTI9_5_IRQHandler(){
 	if(EXTI_GetITStatus(EXTI_Line6) != RESET){
