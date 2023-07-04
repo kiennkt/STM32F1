@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'Timer_Basic' 
+ * Project: 'Timing' 
  * Target:  'Timer_Basic' 
  */
 
