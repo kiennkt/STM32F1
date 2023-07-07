@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'Timing' 
+ * Project: 'Timing_Led7Seg' 
  * Target:  'Led7Seg' 
  */
 
