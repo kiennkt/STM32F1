@@ -51,8 +51,8 @@ void Config_LED(){
 // cau hinh chan cho 2 button
 void Config_Button(){
 	// cau hinh chan C13;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-	GPIO_LED.GPIO_Mode = GPIO_Mode_Out_PP;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	GPIO_LED.GPIO_Mode = GPIO_Mode_IPU;
 	GPIO_LED.GPIO_Pin = GPIO_Pin_13;
 	GPIO_LED.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC, &GPIO_LED);
@@ -93,17 +93,17 @@ void Xuly(){
 	unsigned int i, j;
 	TryAgain:
 	for(i = 0; i < 6000; i++){
-//		if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 0){
-//			goto TryAgain;
-//		}
-//		if(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0){
-//			while(1){
-//				if(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 1){
-//					break;
-//				}
-//				Scanning_LED(i);
-//			}
-//		}
+		if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 0){
+			goto TryAgain;
+		}
+		if(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0){
+			while(1){
+				if(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 1){
+					break;
+				}
+				Scanning_LED(i);
+			}
+		}
 		for(j = 0; j < 24; j++){
 			Scanning_LED(i);
 		}
