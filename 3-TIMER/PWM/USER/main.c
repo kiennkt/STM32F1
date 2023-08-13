@@ -19,7 +19,7 @@ int main(void){
 void Led_Config(){
 	GPIO_InitTypeDef gpio;
 //	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	RCC->APB2ENR |= 1<<2;
+	RCC->APB2ENR = (RCC->APB2ENR << 2) | 1;
 	GPIOA->CRL = 0x0000bbbb;
 //	gpio.GPIO_Mode = GPIO_Mode_AF_PP;
 //	gpio.GPIO_Speed = GPIO_Speed_50MHz;
