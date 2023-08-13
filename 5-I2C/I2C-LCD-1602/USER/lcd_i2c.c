@@ -71,9 +71,15 @@ void LCD_Init(){
 	Delay_Ms(1);
 	LCD_Send_Command(0x01); // clear display
 	Delay_Ms(1);
-	LCD_Send_Command(0x06); // Entry mode set        	// End init
+	LCD_Send_Command(0x06); // Entry mode set, I/D = 0, S = 0    	// End init
 	Delay_Ms(1);
-	LCD_Send_Command(0x0F); // D = C = B = 1
+	LCD_Send_Command(0x0C); // D = C = B = 1
+}
+
+void LCD_Send_String(char *str){
+	while(*str){
+		LCD_Send_Data(*str++);
+	}
 }
 
 void LCD_Clear (void) {
@@ -93,8 +99,18 @@ void LCD_Put_Cursor(uint8_t row, uint8_t column){
 	LCD_Send_Command(column);
 }
 
-void LCD_Send_String(char *str){
-	while(*str){
-		LCD_Send_Data(*str++);
-	}
+void LCD_Right_Shift_Display(uint8_t n){
+	uint8_t i;
+	for(i = 0; i < n; i++){
+		LCD_Send_Command(0x1C);
+		Delay_Ms(400);
+	}	
+}
+
+void LCD_Left_Shift_Display(uint8_t n){
+	uint8_t i;
+	for(i = 0; i < n; i++){
+		LCD_Send_Command(0x18);
+		Delay_Ms(400);
+	}	
 }

@@ -16,8 +16,12 @@ int main(void) {
 	LCD_Send_String("KIM TUAN KIEN");
 	LCD_Put_Cursor(1, 5);
 	LCD_Send_String("PTIT");
-
+	Delay_Ms(5000);
+	LCD_Left_Shift_Display(6);
+	
 	while (1) {
+		LCD_Right_Shift_Display(12);
+		LCD_Left_Shift_Display(12);
 		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
 		Delay_Ms(500);
 		GPIO_SetBits(GPIOC, GPIO_Pin_13);
@@ -35,7 +39,7 @@ void Config_GPIO(){
 	gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC, &gpioInit);
 	
-	/* cau hinh chan PB6-SCL vï¿½ PB7-SDA */
+	/* cau hinh chan PB6-SCL và PB7-SDA */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
 	gpioInit.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
