@@ -17,7 +17,6 @@ int main(void) {
 	LCD_Put_Cursor(1, 5);
 	LCD_Send_String("PTIT");
 
-
 	while (1) {
 		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
 		Delay_Ms(500);
@@ -36,7 +35,7 @@ void Config_GPIO(){
 	gpioInit.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC, &gpioInit);
 	
-	/* cau hinh chan PB6-SCL và PB7-SDA */
+	/* cau hinh chan PB6-SCL vï¿½ PB7-SDA */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	gpioInit.GPIO_Mode = GPIO_Mode_AF_OD;
 	gpioInit.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
