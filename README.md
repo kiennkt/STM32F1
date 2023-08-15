@@ -5,5 +5,6 @@
 ### Schematic
 ![Schematic](https://3.bp.blogspot.com/-MwVmWSpI1Hs/XHvRZFC2FbI/AAAAAAAAAWg/ad3VmRCUdX4q23tXqF-Z2nJg7Gg0LXWqQCEwYBhgL/s1600/stm32f103c8t6_Schematic.jpg)
 ## Installation
-1. Install Keil C in https://www.keil.com/download/product/  
+1. Install Keil C in ![Link KeilC](https://www.keil.com/download/product/) (<a>)
 2. Install pakages (CMSIS-Driver, Keil::ARM_Compiler)
+3. Download source code at ![Src](https://github.com/kiennkt/STM32F1) (<a>)
